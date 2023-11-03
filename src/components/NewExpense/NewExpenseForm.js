@@ -2,21 +2,51 @@ import './NewExpenseForm.css';
 import {useState} from 'react';
 
 function NewExpenseForm(){
-    const [enteredtitle,setentertitle]=useState();
-    const [enteredamount,setenteramount]=useState();
-    const [entereddate,setenterdate]=useState();
+    // const [enteredtitle,setentertitle]=useState();
+    // const [enteredamount,setenteramount]=useState();
+    // const [entereddate,setenterdate]=useState();
+
+
+    const [userinput, setuserinput]=useState({
+        enteredtitle:'',
+        enteredamount:'',
+        entereddate:''
+    });
 
 function onchangeHandler(event){
-    setentertitle(event.target.value);
+    
+    //code for multiple useState
+    //setentertitle(event.target.value);
+    // setuserinput({
+    //     ...userinput,
+    //     enteredtitle:event.target.value
+    // });
+
+    //using single useState
+    setuserinput((prevState)=>{
+        return {...prevState,enteredtitle:event.target.value};
+    }
+    
+    )
 
 }
 
 function amounthandler(event){
-    setenteramount(event.target.value)
+    //setenteramount(event.target.value)
+    setuserinput({
+        ...userinput,
+        enteredamount:event.target.value
+    });
+
 }
 
 function datehandler(event){
-    setenterdate(event.target.value)
+   // setenterdate(event.target.value)
+   setuserinput({
+    ...userinput,
+    entereddate:event.target.value
+});
+
 }
 
 
