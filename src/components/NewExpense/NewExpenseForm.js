@@ -1,7 +1,7 @@
 import './NewExpenseForm.css';
 import {useState} from 'react';
 
-function NewExpenseForm(){
+function NewExpenseForm(props){
     const [enteredTitle, setEnteredTitle] = useState('');
     const [enteredAmount, setEnteredAmount] = useState('');
     const [enteredDate, setEnteredDate] = useState('');
@@ -26,8 +26,13 @@ function NewExpenseForm(){
             amount:enteredAmount,
             date:new Date(enteredDate)
         };
-        alert('submitted')
-        console.log(ExpenseDate);
+        props.onSaveExpenseData(ExpenseDate);
+        setEnteredTitle('');
+        setEnteredAmount('');
+        setEnteredDate('');
+
+
+        
     };
 
     
@@ -37,15 +42,15 @@ function NewExpenseForm(){
             <div className="new-expense__controls">
             <div className="new-expense__control label">
             <label>Title</label>
-            <input type="text" id="title1" onChange={titlehandler}></input>
+            <input type="text" id="title1" onChange={titlehandler} value={enteredTitle}></input>
             </div>
             <div className="new-expense__control label">
             <label>Amount</label>
-            <input type="number" id="amount1" onChange={amounthandler}></input>
+            <input type="number" id="amount1" onChange={amounthandler} value={enteredAmount}></input>
             </div>
             <div className="new-expense__control label">
             <label>Expense Date</label>
-            <input type="date" id="date1" onChange={datehandler}></input>
+            <input type="date" id="date1" onChange={datehandler} value={enteredDate}></input>
             </div>
             <div>
             <div className="new-expense__actions">
