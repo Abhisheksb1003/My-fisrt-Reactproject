@@ -2,73 +2,54 @@ import './NewExpenseForm.css';
 import {useState} from 'react';
 
 function NewExpenseForm(){
-    // const [enteredtitle,setentertitle]=useState();
-    // const [enteredamount,setenteramount]=useState();
-    // const [entereddate,setenterdate]=useState();
+    const [enteredTitle, setEnteredTitle] = useState('');
+    const [enteredAmount, setEnteredAmount] = useState('');
+    const [enteredDate, setEnteredDate] = useState('');
 
-
-    const [userinput, setuserinput]=useState({
-        enteredtitle:'',
-        enteredamount:'',
-        entereddate:''
-    });
-
-function onchangeHandler(event){
-    
-    //code for multiple useState
-    //setentertitle(event.target.value);
-    // setuserinput({
-    //     ...userinput,
-    //     enteredtitle:event.target.value
-    // });
-
-    //using single useState
-    setuserinput((prevState)=>{
-        return {...prevState,enteredtitle:event.target.value};
+    function titlehandler(event){
+        setEnteredTitle(event.target.value);
     }
+
+    function amounthandler(event){
+        setEnteredAmount(event.target.value);
+    }    
+
+    function datehandler(event){
+        setEnteredDate(event.target.value);
+    }
+
+    const submithandler=(event)=>{
+        event.preventDefault();
+
+        const ExpenseDate={
+            title:enteredTitle,
+            amount:enteredAmount,
+            date:new Date(enteredDate)
+        };
+        alert('submitted')
+        console.log(ExpenseDate);
+    };
+
     
-    )
-
-}
-
-function amounthandler(event){
-    //setenteramount(event.target.value)
-    setuserinput({
-        ...userinput,
-        enteredamount:event.target.value
-    });
-
-}
-
-function datehandler(event){
-   // setenterdate(event.target.value)
-   setuserinput({
-    ...userinput,
-    entereddate:event.target.value
-});
-
-}
-
-
 
     return (
-        <form>
+        <form onSubmit={submithandler}>
             <div className="new-expense__controls">
             <div className="new-expense__control label">
             <label>Title</label>
-            <input type="text" onChange={onchangeHandler}></input>
+            <input type="text" id="title1" onChange={titlehandler}></input>
             </div>
             <div className="new-expense__control label">
             <label>Amount</label>
-            <input type="number" onChange={amounthandler}></input>
+            <input type="number" id="amount1" onChange={amounthandler}></input>
             </div>
             <div className="new-expense__control label">
             <label>Expense Date</label>
-            <input type="date" onChange={datehandler}></input>
+            <input type="date" id="date1" onChange={datehandler}></input>
             </div>
             <div>
             <div className="new-expense__actions">
-                <button>Add Expense</button>
+                <button type="submit">Add Expense</button>
 
             </div>
             </div>
