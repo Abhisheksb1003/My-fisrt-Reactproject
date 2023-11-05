@@ -8,7 +8,7 @@ const DUMMY_EXPENSES = [{
   title: "Toilet Paper",
   amount: 94.12,
   date: new Date(2020, 7, 14),
-  location: "Dharwad",
+  location: "Gadag",
 },
 {
   id: "e2",
@@ -22,14 +22,14 @@ const DUMMY_EXPENSES = [{
   title: "Car Insurance",
   amount: 294.67,
   date: new Date(2021, 2, 28),
-  location: "Gadag",
+  location: "Banglore",
 },
 {
   id: "e4",
   title: "New Desk (Wooden)",
   amount: 450,
   date: new Date(2021, 5, 12),
-  location: "Udapi",
+  location: "Mysore",
 },]
 
 
